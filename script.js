@@ -88,19 +88,23 @@ $(document).ready(function () {
 
 	$('#input').submit(function (event) {
 		event.preventDefault();
-		init();
+		if ($('#main').val()) {
+			init();
 
-		code = $('#main').val();
-		code = code.replace(/[^+-.,\]\[<>]/g, "");
+			code = $('#main').val();
+			code = code.replace(/[^+-.,\]\[<>]/g, "");
 
-		console.log(code.replace(/(\r\n|\n|\r)/gm, ""));
+			console.log(code.replace(/(\r\n|\n|\r)/gm, ""));
 
-		while (x !== code.length - 1) {
-			parseCharacter(code[x]);
+			while (x !== code.length - 1) {
+				parseCharacter(code[x]);
+			}
+
+			// $('#main').val('');
+			$('#main').focus();
+		} else {
+			alert("Please enter code!");
 		}
-
-		// $('#main').val('');
-		$('#main').focus();
 	});
 
 });
