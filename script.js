@@ -4,7 +4,7 @@ $(document).ready(function () {
 	let x = 0;
 	let startLoop;
 	let code;
-  let globalThing = false;
+	let globalThing = false;
 	for (let i = 0; i < 10; i++) {
 		memory.push(0);
 	}
@@ -59,19 +59,18 @@ $(document).ready(function () {
 					}
 				}
 				break;
-        
-			case ',':
-			  // wait for input
-        let raw = parseInt(window.prompt());
-        memory[p] = raw;
-        console.log("reached");
-        x++;
-			  break;
 
 			case '.':
 				print(String.fromCharCode(memory[p]));
-				console.log(memory[p]);
-        console.log('m');
+				x++;
+				break;
+
+			case ',':
+				// wait for input
+				// let raw = parseInt(window.prompt());
+				memory[p] = parseInt(window.prompt());
+				// sleep(5000);
+				console.log("reached");
 				x++;
 				break;
 
@@ -82,8 +81,8 @@ $(document).ready(function () {
 		console.log(memory);
 	}
 
-	function print(y) {
-		document.getElementById("output").innerHTML += y;
+	function print(text) {
+		document.getElementById("output").innerHTML += text;
 	}
 
 	$('#input').submit(function (event) {
