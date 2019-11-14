@@ -5,7 +5,7 @@ $(document).ready(function () {
 	let startLoop;
 	let code;
 	let globalThing = false;
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 30; i++) {
 		memory.push(0);
 	}
 
@@ -15,7 +15,7 @@ $(document).ready(function () {
 		x = 0;
 		startLoop = 0;
 		code = '';
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 30; i++) {
 			memory[i] = 0;
 		}
 		document.querySelector("#output").innerHTML = "";
@@ -79,6 +79,7 @@ $(document).ready(function () {
 				break;
 		}
 		console.log(memory);
+		document.getElementById("array").innerHTML = memory;
 	}
 
 	function print(text) {
