@@ -4,6 +4,7 @@ $(document).ready(function () {
 	let x = 0;
 	let startLoop;
 	let code;
+  let globalThing = false;
 	for (let i = 0; i < 10; i++) {
 		memory.push(0);
 	}
@@ -42,7 +43,6 @@ $(document).ready(function () {
 			case '[':
 				startLoop = p;
 				if (memory[p] === 0) {
-					// console.log(code.slice(x))
 					x = code.slice(x).split("").findIndex(k => k == ']');
 				} else {
 					x++;
@@ -59,15 +59,21 @@ $(document).ready(function () {
 					}
 				}
 				break;
+        
+			case ',':
+			  // wait for input
+        let raw = parseInt(window.prompt());
+        memory[p] = raw;
+        console.log("reached");
+        x++;
+			  break;
+
 			case '.':
 				print(String.fromCharCode(memory[p]));
-				console.log(memory[p])
+				console.log(memory[p]);
+        console.log('m');
 				x++;
 				break;
-
-			// case ',':
-			//   
-			//   break;
 
 			default:
 				print("!");
@@ -76,9 +82,8 @@ $(document).ready(function () {
 		console.log(memory);
 	}
 
-
-	function print(x) {
-		document.getElementById("output").innerHTML += x;
+	function print(y) {
+		document.getElementById("output").innerHTML += y;
 	}
 
 	$('#input').submit(function (event) {
@@ -91,7 +96,7 @@ $(document).ready(function () {
 		console.log(code.replace(/(\r\n|\n|\r)/gm, ""));
 
 		while (x !== code.length - 1) {
-			parseCharacter(code[x])
+			parseCharacter(code[x]);
 		}
 
 		// $('#main').val('');
